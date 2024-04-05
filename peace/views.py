@@ -85,6 +85,7 @@ class LoginView(View):
             if police and police.check_password(password):
                 # Authentication successful
                 request.session['email_address'] = police.email_address
+                police_email = police.email_address
                 return redirect('dashboard')
             else:
                 # Authentication failed

@@ -115,7 +115,7 @@ class Response(models.Model):
     response_id = models.AutoField(primary_key=True, help_text="Enter a valid testification id")
     ob_number = models.ForeignKey(Case, on_delete=models.CASCADE, help_text="Enter a valid OB Number")
     national_id_no = models.ForeignKey(Suspect, on_delete=models.CASCADE, help_text="Enter a valid Suspect Identifier")
-    serial_number = models.CharField(max_length=8, unique=True, help_text="Auto-generated serial number", blank=True)
+    serial_number = models.CharField(max_length=200, unique=True, help_text="Auto-generated serial number", blank=True)
     date_recorded = models.DateTimeField(auto_now_add=True, help_text="Date of submission", blank=True)
     trace = models.CharField(max_length=3, choices=[('Yes', 'Yes'), ('No', 'No')], help_text="Any strong Trace of Suspect in Crime Scene?")
     recidivist = models.CharField(max_length=3, choices=[('Yes', 'Yes'), ('No', 'No')], help_text="Involved in similar case?")
