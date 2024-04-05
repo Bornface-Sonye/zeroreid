@@ -1,0 +1,119 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5; /* Set a light background color */
+}
+
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure header stays on top of other content */
+    padding: 5px; /* Reduced padding for a thinner header */
+    display: flex;
+    justify-content: flex-start; /* Align items at the beginning of the header */
+    align-items: center;
+    background-color: #333; /* Set header background color to black */
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin-left: 20px; /* Add margin to the left of the links */
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+    font-size: 28px; /* Increase font size */
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease; /* Add smooth transition effect */
+}
+
+nav ul li a:hover {
+    color: #4CAF50; /* Change color on hover */
+}
+
+main {
+    text-align: center;
+}
+
+.container {
+    max-width: 800px; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the container */
+    padding: 20px; /* Add some padding */
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+/* Button Styling */
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0; /* Add some margin */
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease; /* Add smooth transition effect */
+}
+
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Text Field Styling */
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 10px 0; /* Add some margin */
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease; /* Add smooth transition effect */
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+    border-color: #4CAF50; /* Change border color on focus */
+}
+
+/* Label Styling */
+label {
+    color: #333;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 6px; /* Add some space below labels */
+}

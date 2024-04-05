@@ -1,0 +1,314 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+    <title>Suspect Forms | Peace Digital</title>
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dark_mode.css' %}">
+    <link rel="stylesheet" href="{% static 'css/form_styles.css' %}">
+    <script src="{% static 'js/theme.js' %}" defer></script>
+    <link rel="stylesheet" href="{% static 'css/forml.css' %}">
+    <link rel="stylesheet" href="{% static 'css/report.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dash.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard_styles.css' %}">
+    <script src="{% static 'js/main.js' %}" defer></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap//3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="robots" content="NONE,NOARCHIVE">
+
+    <style>
+        .hidden {
+            display: none;
+        }
+        
+        /* Adjusted CSS for progress bar */
+        #progress-bar-container {
+            margin-top: 20px;
+        }
+        
+        #progress-bar {
+            width: 100%;
+        } 
+
+        .form-row select,
+        .form-row input[type="password"] {
+            width: 100%; /* Text fields take full width */
+            box-sizing: border-box;
+            padding: 8px; /* Add padding for better appearance */
+            margin-top: 5px; /* Add spacing between label and input */
+        }
+        
+        /* Adjust width of select to be equal with other fields */
+        .form-row select {
+            min-width: 150px; /* Set minimum width */
+        }
+    </style>
+</head>
+<body class="login">
+    <div class="sidebar">
+        <div class="logo-details">
+            <div class="logo_name">PEACE DIGITAL</div>
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav-list">
+            <li>
+                <i class='bx bx-search'></i>
+                <input type="text" placeholder="Search...">
+                <span class="tooltip">Search</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="links_name">Dashboard</span>
+                </a>
+                <span class="tooltip">Dashboard</span>
+            </li>
+            <li>
+                <a href="#" onclick="showForm('add-answer')">
+                    <i class='bx bx-user'></i>
+                    <span class="links_name">Responses</span>
+                </a>
+                <span class="tooltip">Responses</span>
+            </li>
+            <li>
+                <a href="#" onclick="showForm('report-form')">
+                    <i class='bx bx-chat'></i>
+                    <span class="links_name">Report</span>
+                </a>
+                <span class="tooltip">Report</span>
+            </li>
+            <li>
+                <a href="#" onclick="showForm('logout')" >
+                    <i class='bx bx-log-out' id="log_out"></i>
+                    <span class="links_name">Log out</span>
+                </a>
+                <span class="tooltip">Log out</span>
+            </li>
+            <li class="profile">
+                <div class="profile-details">
+                    <img src="{% static 'img/logo.jpg' %}" alt="PEACE Logo">
+                    <div class="name_job">
+                        <div class="name">Peace Digital</div>
+                        <div class="job">Web Application</div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Container -->
+    <section class="home-section">
+        <!-- Header -->
+        <div id="container">
+            <div id="header">
+                <div id="branding">
+                    <h1 id="site-name"><a href="{% url 'dashboard' %}">PEACE 2017 REFORMED</a></h1><br>
+                    <button class="theme-toggle">
+                        <div class="visually-hidden theme-label-when-auto">Toggle theme (current theme: auto)</div>
+                        <div class="visually-hidden theme-label-when-light">Toggle theme (current theme: light)</div>
+                        <div class="visually-hidden theme-label-when-dark">Toggle theme (current theme: dark)</div>
+                        <svg aria-hidden="true" class="theme-icon-when-auto">
+                            <use xlink:href="#icon-auto" />
+                        </svg>
+                        <svg aria-hidden="true" class="theme-icon-when-dark">
+                            <use xlink:href="#icon-moon" />
+                        </svg>
+                        <svg aria-hidden="true" class="theme-icon-when-light">
+                            <use xlink:href="#icon-sun" />
+                        </svg>
+                    </button>
+                </div>  
+            </div>
+            <!-- END Header -->
+            <div class="main" id="main">
+                <div id="content-start" class="content" tabindex="-1">
+                    <!-- Content -->
+                    <div id="content" class="colM">
+                        <!-- Add Answer Form Section -->
+                        <section id="add-answer" class="form-section hidden">
+                            <h1 id="site-name"><a href="{% url 'dashboard' %}">Suspect Questionnaire</a></h1><br>
+                            <form action="{% url 'dashboard' %}" method="post" id="answer-form">   
+                                {% csrf_token %}
+                                <!-- Suspect Details Section -->
+                               <div >
+                                    <h2><big>Suspect Personal Information:</big></h2><br><br>
+                                    <div class="form-field">                   
+                                        <label for="{{ answer_form.ob_number.id_for_label }}" class="required">Case Number:</label><br><br>
+                                        {{ answer_form.ob_number }}
+                                        {{ answer_form.ob_number.errors }}
+                                    </div>
+                                    <br><br>
+                                    <div class="form-field">
+                                        <label for="{{ answer_form.national_id_no.id_for_label }}" class="required">Enter the Suspect National ID Number::</label><br><br>
+                                        {{ answer_form.national_id_no }}
+                                        {{ answer_form.national_id_no.errors }}
+                                    </div><br>  
+                               </div>
+                                <br><br><br>
+
+                                <!-- Answer Information Section -->
+                                <div>
+                                    <h2><big>Case Related Information:</big></h2><br>
+                                    <div class="form-field">
+                                        <label for="{{ answer_form.trace.id_for_label }}" class="required">{{ answer_form.trace.label }}</label><br><br>
+                                        {{ answer_form.trace }}
+                                        {{ answer_form.trace.errors }}
+                                    </div><br>
+                                    <div class="form-field">
+                                        <label for="{{ answer_form.recidivist.id_for_label }}" class="required">{{ answer_form.recidivist.label }}</label><br><br>
+                                        {{ answer_form.recidivist }}
+                                        {{ answer_form.recidivist.errors }}
+                                    </div>
+                                </div>
+                                <br><br><br>
+
+                                <!-- Answer Information Section -->
+                                <div>
+                                    <h2><big>Suspect Interrogation Phase 1:</big></h2><br>
+                                    <div class="form-field">
+                                        <label for="{{ answer_form.question1.id_for_label }}" class="required">{{ answer_form.question1.label }}</label><br><br>
+                                        {{ answer_form.question1 }}
+                                        {{ answer_form.question1.errors }}
+                                    </div><br>
+                                    <div class="form-field">
+                                        <label for="{{answer_form.question2.id_for_label }}" class="required">{{ answer_form.question2.label }}</label><br><br>
+                                        {{ answer_form.question2 }}
+                                        {{answer_form.question2.errors }}
+                                    </div><br>
+                                    <div class="form-field">
+                                        <label for="{{ answer_form.question3.id_for_label }}" class="required">{{ answer_form.question3.label }}</label><br><br>
+                                        {{ answer_form.question3 }}
+                                        {{ answer_form.question3.errors }}
+                                    </div><br>
+                                </div>
+                                <br><br><br>
+                                
+                                <!-- Answer Information Section -->
+                                <div>
+                                    <h2><big>Suspect Interrogation Phase 2:</big></h2><br>
+                                    <div class="form-field">
+                                        <label for="{{ answer_form.query1.id_for_label }}" class="required">{{ answer_form.query1.label }}</label><br><br>
+                                        {{ answer_form.query1 }}
+                                        {{ answer_form.query1.errors }}
+                                    </div><br>
+                                    <div class="form-field">
+                                        <label for="{{answer_form.query2.id_for_label }}" class="required">{{ answer_form.query2.label }}</label><br><br>
+                                        {{ answer_form.query2 }}
+                                        {{answer_form.query2.errors }}
+                                    </div><br>
+                                    <div class="form-field">
+                                        <label for="{{ answer_form.query3.id_for_label }}" class="required">{{ answer_form.query3.label }}</label><br><br>
+                                        {{ answer_form.query3 }}
+                                        {{ answer_form.query3.errors }}
+                                    </div><br>
+                                </div>
+                                <br><br><br>
+
+
+                                <div class="submit-row">
+                                    <input type="submit" value="Save">
+                                </div>
+                                <br>
+                            </form>
+
+                            {% if error_message %}
+                            <p class="error">{{ error_message }}</p>
+                            {% endif %}
+                        </section>
+
+                        <!-- Report Form Section -->
+                        <section id="report-form" class="form-section hidden"> 
+                            <h1 id="site-name"><a href="{% url 'dashboard' %}">Suspect Report</a></h1><br>
+                            <form method="post" action="{% url 'dashboard' %}" class="report-form" id="report-form">
+                                {% csrf_token %}
+                                <label for="serial_number">Serial Number:</label>
+                                <input type="text" name="serial_number" required>
+                                <div class="button-container">
+                                    <button type="submit" class="generate-button button">Generate Report</button>
+                                </div>
+                                 <!-- Progress Bar -->
+                                   <div class="progress-bar-container">
+                                     <div class="progress-bar" id="progress-bar"></div>
+                                     </div>
+                                {% if error_message %}
+                                 <p class="error">{{ error_message }}</p>
+                                {% endif %}
+                            </form>         
+                        </section>
+
+                    <section id="logout" class="form-section hidden">
+                        <div class="container">
+                            <h1 "site-name">Logout</h1>
+                            <p>Are you sure you want to logout?</p>
+                            <form action="{% url 'logout' %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit">Logout</button>
+                            </form>
+
+
+                            {% if error_message %}
+                            <p class="error">{{ error_message }}</p>
+                            {% endif %}
+                        </div>
+
+                    </section>
+                    </div>
+                    <br class="clear">
+                </div>
+                <!-- END Content -->
+                <div id="footer"></div>
+            </div>
+        </div>
+        <!-- END Container -->
+    </section>
+    <!-- JavaScript -->
+    <script>
+        function hideAllForms() {
+            document.querySelectorAll('.form-section').forEach(function(formSection) {
+                formSection.classList.add('hidden');
+            });
+        }
+
+        function showForm(formId) {
+            hideAllForms();
+            document.getElementById(formId).classList.remove('hidden');
+        }
+        // Function to start the progress animation
+        function startProgress() {
+            var progressBar = document.getElementById('progress-bar');
+            progressBar.style.visibility = 'visible'; // Show the progress bar
+        }
+
+        // Function to stop the progress animation (called when the report is generated or downloaded)
+        function stopProgress() {
+            var progressBar = document.getElementById('progress-bar');
+            progressBar.style.visibility = 'hidden'; // Hide the progress bar
+        }
+
+        // Listen for the X-Stop-Progress response header and stop the progress animation
+        window.addEventListener('load', function() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.getResponseHeader('X-Stop-Progress') === 'true') {
+                        stopProgress(); // Call stopProgress function
+                    }
+                }
+            };
+            xhr.open('GET', document.location, true);
+            xhr.send(null);
+        });
+    </script>
+    <!-- END JavaScript -->
+    <!-- SVGs -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="base-svgs">
+        <symbol viewBox="0 0 24 24" width="1rem" height="1rem" id="icon-auto"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2V4a8 8 0 1 0 0 16z"/></symbol>
+        <symbol viewBox="0 0 24 24" width="1rem" height="1rem" id="icon-moon"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M10 7a7 7 0 0 0 12 4.9v.1c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2h.1A6.979 6.979 0 0 0 10 7zm-6 5a8 8 0 0 0 15.062 3.762A9 9 0 0 1 8.238 4.938 7.999 7.999 0 0 0 4 12z"/></symbol>
+        <symbol viewBox="0 0 24 24" width="1rem" height="1rem" id="icon-sun"><path d="M0 0h24v24H0z" fill="currentColor"/><path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></symbol>
+    </svg>
+    <!-- END SVGs -->
+</body>
+</html>

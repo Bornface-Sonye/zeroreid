@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="error-container">
+    <h2 class="error-title">Report Generation Failed!</h2>
+    <p class="serial-number">Report for the provided email address does not exist.</p>
+    <a href="{% url 'home' %}" class="return-button">Return to Interrogator Dashboard</a>
+</div>
+{% endblock %}

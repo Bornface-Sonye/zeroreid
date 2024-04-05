@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                <li><a href="{% url 'login' %}">Log In</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="home">
+            <div class="container">
+                <div class="left-container">
+                    <div>
+                        <img src="{% static 'img/logo.jpg' %}" alt="PEACE Logo">
+                    </div>
+                </div>
+                <div class="right-container">
+                    <h2><big>Justice, Peace, and Harmony</big></h2>
+                    <p class="p1">Welcome to Peace Digital!</p>
+                    <p class="p1"><big>Reformed and Revolutionized Peace Model!</big></p>
+                    <p class="p2"><bold>Your path to Justice Begins Here!</bold></p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="about">
+            <h2>About Us</h2>
+            <p>We deal with Cyber Crimes.</p>
+        </section>
+        
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <span class="icon">&#9742;</span>
+            <p>0798073204</p>
+            <span class="icon">&#9993;</span>
+            <p>bornfacesonye@gmail.com</p>
+        </section>
+        
+        <!-- Newsletter Section -->
+        <section id="newsletter" class="newsletter">
+            <h2 class="newsletter-title">Subscribe to Our Newsletter</h2>
+            <form class="newsletter-form" action="#" method="post" role="form" aria-label="Newsletter Subscription Form">
+                <input type="email" class="input-email" placeholder="Enter your email address" required aria-required="true">
+                <button type="submit" class="subscribe-btn">Subscribe</button>
+            </form>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 All Rights Reserved</p>
+    </footer>
+    
+    <a href="#home" id="back-to-top" title="Back to Top">&uarr;</a>
+{% endblock %}

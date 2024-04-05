@@ -1,0 +1,231 @@
+/* Reset some default styles */
+body, h1, h2, p, ul {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5; /* Light gray background */
+}
+
+header {
+    background-color: #08021a;
+    color: #fff;
+    padding:  40px; /* Increased padding for more thickness */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure header is above other elements */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+}
+
+.p1 {
+    color: #555;
+    font-size: medium;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header nav ul {
+    list-style-type: none;
+}
+
+header nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+header nav ul li:first-child {
+    margin-left: 0; /* Remove margin for the first child */
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease; /* Smooth transition on hover */
+}
+
+header nav ul li a:hover {
+    color: #12163a; /* Change color on hover */
+}
+
+main {
+    text-align: center; /* Center-align content */
+}
+
+section {
+    margin-bottom: 50px;
+    border-radius: 10px; /* Rounded corners for sections */
+    box-shadow: 0 4px 10px rgba(248, 247, 247, 0.1); /* Add shadow for depth */
+    padding: 60px; /* Increased padding for spacing */
+}
+
+section h2 {
+    margin-bottom: 30px;
+    font-size: 28px; /* Increase font size */
+    color: #111010;
+}
+
+section p {
+    color: #f3eeee;
+}
+
+section#contact {
+    background-color: #fcfafd; /* Golden yellow background */
+}
+
+section#newsletter {
+    background-color: #f4f7f7; /* Sky blue background */
+}
+
+footer {
+    background-color: #0d041f;
+    color: #fff;
+    padding: 40px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+footer p {
+    font-size: 16px;
+}
+
+#back-to-top {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: #fff;
+    background-color: #333; /* Dark background for button */
+    padding: 10px 15px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+    z-index: 1000; /* Ensure back-to-top button is above other elements */
+}
+
+#back-to-top:hover {
+    background-color: #555; /* Darken button on hover */
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    background-attachment: fixed;
+    background-color: rgb(250, 249, 248);
+    color: black;
+}
+
+.left-container {
+    flex: 1;
+   /* background-color: #c5d4da ;*/
+    display: flex;
+   /* align-items: center;*/
+}
+
+.left-container img {
+    max-width: 100%;
+    height: auto;
+    margin-left: -10px; /* Move image to left margin */
+    clip-path: circle(55%); /* Apply clipping path to create a circular shape */
+}
+
+
+
+.right-container {
+    flex: 1;
+    padding-left: 40px;
+    text-align: left;
+     /*background-image: url('img7.jpg'); /* Set background image */
+    background-size: cover; /* Ensure the image covers the entire container */
+    background-position: center; /* Center the background image */
+    color: #0e0d0d; /* Set text color to ensure readability */
+    padding: 60px; /* Increased padding for spacing */
+    display: flex; /* Use flexbox to center content vertically */
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center; /* Center content vertically */
+}
+
+.right-container h2,
+.right-container p {
+    max-width: 600px; /* Set maximum width for text content */
+    margin: 0 auto; /* Center text content horizontally */
+}
+
+
+/* Newsletter Section Styles */
+.newsletter {
+    background-color: #EF3B2D;
+    color: #fff;
+    text-align: center;
+    padding: 60px 0;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Newsletter Title Styles */
+.newsletter-title {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    animation: slideInUp 1s ease-in-out;
+}
+
+/* Newsletter Form Styles */
+.newsletter-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    animation: slideInUp 1s ease-in-out;
+}
+
+.input-email {
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    width: 300px;
+    font-size: 18px;
+}
+
+.subscribe-btn {
+    background-color: #fff;
+    color: #EF3B2D;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 18px;
+}
+
+.subscribe-btn:hover {
+    background-color: #333;
+    color: #fff;
+    animation: bounce 0.5s ease-in-out;
+}
+
+/* Footer Section Styles */
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 40px 0;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Footer Logo Styles */
+.footer-logo {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
