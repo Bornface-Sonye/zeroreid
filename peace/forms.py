@@ -68,12 +68,6 @@ class LoginForm(forms.Form):
     
     
 class AnswerForm(forms.ModelForm):
-    ob_number = forms.ModelChoiceField(
-        queryset=Case.objects.all(),
-        required=True,
-        label='Case Book Number',
-        widget=forms.Select(attrs={'class': 'blue-input-box'}),
-    )
     
     class Meta:
         model = Response
@@ -91,6 +85,7 @@ class AnswerForm(forms.ModelForm):
             'query3': 'Have you heard of any additional complaints filed by the accuser? If so, specify.',
         }
         widgets = {
+            'ob_number': forms.TextInput(attrs={'class': 'black-input-box'}),
             'national_id_no': forms.TextInput(attrs={'class': 'black-input-box'}),
             'trace': forms.Select(choices=[('Yes', 'Yes'), ('No', 'No')], attrs={'class': 'black-input-box'}),
             'recidivist': forms.Select(choices=[('Yes', 'Yes'), ('No', 'No')], attrs={'class': 'black-input-box'}),
@@ -101,6 +96,15 @@ class AnswerForm(forms.ModelForm):
             'query2': forms.TextInput(attrs={'class': 'black-input-box'}),
             'query3': forms.TextInput(attrs={'class': 'black-input-box'}),
         }
+        
+        
+        def clean_ob_number(self):
+            ob_number = self.cleaned_data['ob_number']
+            # Define the regular expression pattern for the badge number format
+            pattern = re.compile(r'^[A-Z]{3}\d{3}$')
+            if not pattern.match(ob_number):
+                raise forms.ValidationError("OB number must start with 3 uppercase letters followed by 3 numbers.")
+            return ob_number
 
 class InterrogatorReportForm(forms.Form):
     serial_number = forms.CharField(

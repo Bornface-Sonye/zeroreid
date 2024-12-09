@@ -189,7 +189,9 @@ def generate_serial_number(national_id_no, ob_number):
     unique_identifier = str(uuid.uuid4())
     combined_string = f"{data_string}-{unique_identifier}"
     serial_number = hashlib.md5(combined_string.encode()).hexdigest()
-    return serial_number
+    truncated_hash = serial_number[:8]
+    return truncated_hash
+
 
 class DashboardView(View):
     template_name = 'dashboard.html'
@@ -217,10 +219,24 @@ class DashboardView(View):
             query3 = answer_form.cleaned_data['query3']
             
             
+            # Check if the Case OB Number exists in the Case Table
+            if not Case.objects.filter(ob_number=ob_number).exists():
+                answer_form.add_error(None, "Invalid Case OB Number.")
+                return render(request, self.template_name, {'answer_form': answer_form})
+            
+            
+            
+            # Check if the Suspect ID NO. exists in the Suspect Table
+            if not Suspect.objects.filter(national_id_no=national_id_no).exists():
+                answer_form.add_error(None, "Invalid Suspect National Identification Number.")
+                return render(request, self.template_name, {'answer_form': answer_form})
+            
+            
+            
             # Check for existing response
             if Response.objects.filter(ob_number=ob_number, national_id_no=national_id_no).exists():
-                form.add_error(None, "Intorragation Information for This Suspect ID and Case OB Number already submitted, sorry.")
-                return render(request, self.template_name, {'answer_form': form})
+                answer_form.add_error(None, "Intorragation Information for This Suspect ID and Case OB Number already submitted, sorry.")
+                return render(request, self.template_name, {'answer_form': answer_form})
 
             
             serial_number = generate_serial_number(national_id_no, ob_number)
@@ -242,9 +258,9 @@ class DashboardView(View):
                 
                 
                 
-                if not Response.objects.filter(serial_number=serial_number).exists():
-                    form.add_error(None, "Case Information for the Provided Serial Number does not exist, sorry.")
-                    return render(request, self.template_name, {'report_form': form})                
+                ''' if not Response.objects.filter(serial_number=serial_number).exists():
+                    report_form.add_error(None, "Case Information for the Provided Serial Number does not exist, sorry.")
+                    return render(request, self.template_name, {'report_form': report_form}) '''               
             except Response.DoesNotExist:
                 return render(request, 'interrogator_error.html', {'error_message': f'Suspect Report with serial number "{serial_number}" not found.'})
         
@@ -440,7 +456,6 @@ class SentimentAnalyzer:
         Returns:
             str: 'Y' if sentiment score is >=50, 'N' otherwise.
         """     
-        
         honesty_scores = []
         for key, (text1, text2) in text_group.items():
             try:
@@ -486,8 +501,6 @@ class SentimentAnalyzer:
         average_consistency = sum(consistency_scores) / len(consistency_scores) if consistency_scores else 0
         return round(average_consistency * 100)
 
-
-
 class MachineLearningModel:
     def __init__(self):
         self.new_data = None
@@ -528,7 +541,6 @@ class MachineLearningModel:
     def accuracy(self):
         acc = accuracy_score(self.actual_labels, self.pred_labels)
         class_stats = classification_report(self.actual_labels, self.pred_labels)
-
         accuracy_row = f"{acc * 100:.2f}%"
         class_stats_row = "Classification Stats:\n" + class_stats
 
@@ -558,7 +570,6 @@ class CriminalPrediction:
         self.training_features[self.numeric_feature_names] = self.ss.transform(self.training_features[self.numeric_feature_names])
         self.training_features = pd.get_dummies(self.training_features,columns=self.categorical_feature_names)
         
-    
     def data_retrieval(self,name,age,recidivist,trace,honest,consistency_score,gender):
         self.new_data = pd.DataFrame([{'Name': name,
                         'Age': age,
@@ -583,11 +594,6 @@ class CriminalPrediction:
         self.new_data['Criminal'] = self.predictions
         result = self.new_data[self.outcome_name][self.new_data['Criminal'] != 0].to_string(index=False)
         return result    
-
-    '''def result(self):
-        return self.new_data[self.outcome_name]
-        
-        '''
        
 
 

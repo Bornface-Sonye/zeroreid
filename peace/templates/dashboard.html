@@ -20,6 +20,37 @@
     <meta name="robots" content="NONE,NOARCHIVE">
 
     <style>
+            .form-row {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 20px; /* Add spacing between fields */
+            }
+            .form-row label {
+                width: 100%; /* Label takes full width */
+            }
+            .form-row input[type="text"],
+            .form-row input[type="password"],
+            .form-row input[type="email"] {
+                width: 100%; /* Text fields take full width */
+                box-sizing: border-box;
+                padding: 8px; /* Add padding for better appearance */
+                margin-top: 5px; /* Add spacing between label and input */
+                border: 1px solid #ccc; /* Add border */
+            }
+            /* Adjust width of select to be equal with other fields */
+            .form-row select {
+                min-width: 150px; /* Set minimum width */
+            }
+            /* Style for error messages */
+            .error-message {
+                color: red; /* Set text color to red */
+                font-size: 0.8em; /* Reduce font size */
+                margin-top: 5px; /* Add spacing between input field and error message */
+            }
+            /* Style for underlining */
+            .error-input {
+                border: 1px solid red !important; /* Set border color to red */
+            }
         .hidden {
             display: none;
         }
@@ -132,19 +163,28 @@
                             <h1 id="site-name"><a href="{% url 'dashboard' %}">Suspect Questionnaire</a></h1><br>
                             <form action="{% url 'dashboard' %}" method="post" id="answer-form">   
                                 {% csrf_token %}
+                                {% if form.errors %}
+                                <div class="error-message" role="alert">
+                                  {% for field, error_list in form.errors.items %}
+                                     {% for error in error_list %}
+                                       {{ error }}
+                                     {% endfor %}
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
                                 <!-- Suspect Details Section -->
                                <div >
                                     <h2><big>Suspect Personal Information:</big></h2><br><br>
                                     <div class="form-field">                   
-                                        <label for="{{ answer_form.ob_number.id_for_label }}" class="required">Case Number:</label><br><br>
+                                        <label for="{{ answer_form.ob_number.id_for_label }}" class="required">Case OB Number:</label><br><br>
                                         {{ answer_form.ob_number }}
-                                        {{ answer_form.ob_number.errors }}
+                                        <span class="error-message">{{ answer_form.errors.ob_number }}</span>
                                     </div>
                                     <br><br>
                                     <div class="form-field">
                                         <label for="{{ answer_form.national_id_no.id_for_label }}" class="required">Enter the Suspect National ID Number::</label><br><br>
                                         {{ answer_form.national_id_no }}
-                                        {{ answer_form.national_id_no.errors }}
+                                        {{ answer_form.errors.national_id_no }}
                                     </div><br>  
                                </div>
                                 <br><br><br>

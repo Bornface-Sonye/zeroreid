@@ -1,94 +1,86 @@
-<<<<<<< HEAD
-# Peace Digital Readme
+# Welcome to Peace Digital Portal 🌟
 
-## Project Overview
+## Introduction:
 
-**Peace Digital** is an innovative investigative technology designed to facilitate a more collaborative and empathetic approach to interrogation, aligning with the principles of the Peace Model.
+Firstly, let us delve into the Reid Technique, pioneered by John E. Reid in the 1950s. This method, initially developed by a polygraph expert and former Chicago Police Officer, emphasizes creating a high-pressure environment followed by expressions of sympathy and understanding. While the Reid Technique has been effective in obtaining confessions, it has faced criticism for its potential to induce false confessions through psychological manipulation.
 
-### Origin
-- **Methodology:** The Peace Model
-- **Year:** 2017
-- **Founder:** Unknown
+In contrast, the Peace Model, introduced in 2017, represents a paradigm shift in interrogation methodology. This approach advocates for a more collaborative and non-accusatory dialogue between investigators and suspects, aiming to elicit a comprehensive account of events rather than solely focusing on obtaining confessions. The Peace Model's emphasis on communication and empathy serves to mitigate the risk of false confessions.
 
-### Problem Addressed
-The project addresses the limitations of traditional interrogation techniques, such as the Reid Technique, which has been criticized for its potential to induce false confessions through psychological manipulation.
+Now, let us turn our attention to the Peace Digital application, a groundbreaking development in investigative technology. Peace Digital leverages modern advancements such as machine learning and sentiment analysis to automate the Peace Model's phases, particularly focusing on the evaluation phase. By calculating emotion scores, confidence scores, obedient scores, and consistency scores based on suspects' responses, Peace Digital aims to enhance the accuracy and efficiency of decision-making during investigations.
 
-## How It Works
+## Landing Page:
 
-### Steps
+### 🌍 Explore Innovative Interrogation!
 
-1. **DepLogin**
-   - Enforcers log in as department member through the provided link.
-   - [DepLogin URL](http://127.0.0.1:8000/peace/)
+- Welcome to the innovative realm of Peace Digital, where interrogation meets collaboration!
+- Check out the latest advancements in investigative technology.
+- Choose your path: "Log In" (💙 Blue Button) or "Sign Up" (💚 Green Button).
 
-2. **Homepage**
-   - Enforcers can choose to log in or sign up from the homepage.
+## Sign Up:
 
-3. **Sign Up**
-   - Enforcers enter their badge number, password, and confirm password to create an account.
+### 🚀 Begin Your Journey!
 
-4. **Log In**
-   - Enforcers log in with their badge number and password.
+- Click on the "Sign Up" button to create your Peace Digital account!
+- Enter your credentials: badge number, password, and confirm password.
 
-5. **Forms Page/Enforcer Dashboard**
-   - Enforcers navigate through the dashboard to access various functionalities.
+## Log In:
 
-6. **Responses**
-   - Enforcers fill out suspect questionnaire forms, generating unique serial numbers upon successful submission.
+### 🔐 Access Your Account!
 
-7. **Report**
-   - Enforcers download case reports by entering the generated serial numbers into the provided form.
+- Log in with your registered badge number and password.
+- Unlock the door to enhanced interrogation techniques.
 
-## Conclusion
-The Peace Digital project offers a modernized approach to interrogation, promoting collaboration and empathy in law enforcement procedures.
-"# PEACE-DIGITAL" 
-=======
-# Peace Digital Readme
+## Enforcer Dashboard:
 
-## Project Overview
+### 🌈 Navigate Your Control Center!
 
-**Peace Digital** is an innovative investigative technology designed to facilitate a more collaborative and empathetic approach to interrogation, aligning with the principles of the Peace Model.
+- Explore the Enforcer Dashboard for a plethora of functionalities.
+- Access suspect questionnaire forms and case reports effortlessly.
 
-### Origin
-- **Methodology:** The Peace Model
-- **Year:** 2017
-- **Founder:** Unknown
+## Fill Out Questionnaires:
 
-### Problem Addressed
-The project addresses the limitations of traditional interrogation techniques, such as the Reid Technique, which has been criticized for its potential to induce false confessions through psychological manipulation.
+### ✍️ Share Insights, Generate Serial Numbers!
 
-## How It Works
+- Fill out suspect questionnaire forms to gather crucial information.
+- Each submission generates a unique serial number for tracking.
 
-### Steps
+## Download Reports:
 
-First visit https://github.com/Bornface-Sonye/Bornface-Sonye to navigate to my project folder and clone the project to your local directory in your local machine.
-Then you can follow the procedures as shown below:-.
-Note that this project is for learning purposes, so corrections are welcomed !
+### 📊 Access Case Reports Effortlessly!
 
-1. **DepLogin**
-   - Enforcers log in as department member through the provided link.
-   - Just start the 'cmd' in your local machine and navigate to the folder you have cloned the project and type 'python manage.py runserver' for windows; then click the link below;-
-   - [DepLogin URL](http://127.0.0.1:8000/peace/)
+- Download case reports by entering the generated serial numbers.
+- Stay informed and empowered with comprehensive interrogation data.
 
-2. **Homepage**
-   - Enforcers can choose to log in or sign up from the homepage.
+## Conclusion:
 
-3. **Sign Up**
-   - Enforcers enter their badge number, password, and confirm password to create an account.
+The Reid Technique and the Peace Model indeed represent contrasting approaches to interrogation, each with its own set of advantages and criticisms. The Reid Technique's reliance on pressure and manipulation to extract confessions has led to concerns about its potential for inducing false confessions, which can have serious consequences for innocent individuals.
 
-4. **Log In**
-   - Enforcers log in with their badge number and password.
+On the other hand, the Peace Model's emphasis on collaboration and empathy aims to create a more ethical and effective interrogation process. By fostering open communication and understanding between investigators and suspects, the Peace Model seeks to reduce the risk of false confessions while still obtaining valuable information.
 
-5. **Forms Page/Enforcer Dashboard**
-   - Enforcers navigate through the dashboard to access various functionalities.
+The introduction of Peace Digital represents a significant advancement in investigative technology, aligning with the principles of the Peace Model. By leveraging machine learning and sentiment analysis, Peace Digital streamlines the evaluation phase of interrogation, providing investigators with valuable insights into suspects' emotional states and credibility. This automated approach not only enhances the efficiency of investigations but also helps mitigate the potential for bias and human error.
 
-6. **Responses**
-   - Enforcers fill out suspect questionnaire forms, generating unique serial numbers upon successful submission.
+## System Requirements:
 
-7. **Report**
-   - Enforcers download case reports by entering the generated serial numbers into the provided form.
+### 6.2 Functional Requirements
 
-## Conclusion
-The Peace Digital project offers a modernized approach to interrogation, promoting collaboration and empathy in law enforcement procedures.
-"# PEACE-DIGITAL" 
->>>>>>> e1ad679c796a6c102f623b3c25cd35c41544da70
+#### Online Submission of Suspect Responses:
+
+- The system should facilitate the submission of suspect responses, allowing for the identification of potential criminals based on their responses.
+
+#### Case Information Tracking:
+
+- Enforcers should be able to track the flow of cases from the time of response submission to sentiment analysis reports and final machine learning results. These results should be available for download in PDF format.
+
+#### Real-time Sentiment Analysis:
+
+- The system should perform sentiment analysis on suspect responses in real-time, providing instant feedback to investigators regarding the emotional tone and credibility of the statements.
+
+#### Automated Decision Support:
+
+- Utilize machine learning algorithms to analyze suspect responses and provide automated recommendations or insights to investigators, aiding in the decision-making process during interrogations.
+
+#### Secure Data Storage and Access Control:
+
+- Ensure secure storage of case information, including suspect responses, sentiment analysis reports, and machine learning results. Access to this data should be restricted to authorized personnel only, with appropriate access controls in place to maintain confidentiality and integrity.
+
+Peace Digital and its integrated functionalities represent a significant step forward in the evolution of interrogation techniques, promising a more ethical, efficient, and just investigative process.

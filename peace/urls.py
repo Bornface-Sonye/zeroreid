@@ -8,7 +8,7 @@ urlpatterns = [
     path('reset-password/', reset_password, name='reset_password'),
     path('reset-password/<str:token>/', reset_password_confirm, name='reset_password_confirm'),
     path('success/<str:serial_number>/', SuccessPageView.as_view(), name='success'),
-    path('error/', ErrorPageView.as_view(), name='error'),
+    path('error/<str:serial_number>/', ErrorPageView.as_view(), name='error'),
     path('logout/', logout, name='logout'),
     
     ]
